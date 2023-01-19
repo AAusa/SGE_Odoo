@@ -1,1 +1,1 @@
-# Business Management System course project
+# Business Management System subject projects using Odoo
