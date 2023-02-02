@@ -14,14 +14,10 @@
           <field name="nombre"/>
         </tree>
       -->
-        <h1>Añadir lector:</h1>
-        <form string="Añadir lector:">
-          <group colspan="2" col="2">
-            <separator string="General stuff" colspan="2"/>
-            <field name="dni"/>
-            <field name="nombre"/>
-          </group>
-        </form>
+        <tree>
+          <field name="dni"/>
+          <field name="nombre"/>
+        </tree>
       </field>
     </record>
     <!--  Vistas de prestamo  -->
