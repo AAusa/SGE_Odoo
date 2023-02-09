@@ -1,34 +1,256 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="empresa.list">
-      <field name="name">empresa list</field>
-      <field name="model">empresa.empresa</field>
+    <!--  explicit list view definition  -->
+    <!--  Primera entidad. Vistas de cliente  -->
+    <record model="ir.ui.view" id="empresa.cliente_list">
+      <field name="name">elcliente</field>
+      <field name="model">empresa.cliente</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="dni"/>
+          <field name="nombre"/>
+          <field name="fechaNacimiento"/>
+          <field name="edad"/>
+          <field name="direccion"/>
+          <field name="telefono"/>
         </tree>
       </field>
     </record>
--->
-
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="empresa.action_window">
-      <field name="name">empresa window</field>
-      <field name="res_model">empresa.empresa</field>
+    <record model="ir.ui.view" id="empresa.cliente_vistas">
+      <field name="name">vistascliente</field>
+      <field name="model">empresa.cliente</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div>
+              <h1>
+                <i class="fa fa-fw o_button_icon fa fa-user"></i>
+                Edicion del cliente:
+              </h1>
+            </div>
+            <group col='6'>
+              <group colspan='3'>
+                <field name="dni"/>
+              </group>
+              <group colspan='3'>
+                <field name="nombre"/>
+              </group>
+            </group>
+            <group col='6'>
+              <group colspan='3'>
+                <field name="fechaNacimiento"/>
+              </group>
+              <group colspan='3'>
+                <field name="telefono"/>
+              </group>
+            </group>
+            <group col='6'>
+              <group colspan='6'>
+                <field name="direccion"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!--  Vistas de factura  -->
+    <record model="ir.ui.view" id="empresa.factura_list">
+      <field name="name">empresa.factura.view</field>
+      <field name="model">empresa.factura</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="numFactura"/>
+          <field name="fechaEmision"/>
+          <field name="total"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="empresa.factura_vistas">
+      <field name="name">vistasfactura</field>
+      <field name="model">empresa.factura</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div>
+              <h1>
+                <i class="fa fa-fw o_button_icon fa fa-file"></i>
+                Edicion de la factura:
+              </h1>
+            </div>
+            <group col='6'>
+              <group colspan='2'>
+                <field name="numFactura"/>
+              </group>
+              <group colspan='2'>
+                <field name="fechaEmision"/>
+              </group>
+              <group colspan='2'>
+                <field name="total"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!--  Vistas de producto  -->
+    <record model="ir.ui.view" id="empresa.producto_list">
+      <field name="name">empresa.producto.view</field>
+      <field name="model">empresa.producto</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="identificador"/>
+          <field name="nombre"/>
+          <field name="descripcion"/>
+          <field name="precio"/>
+          <field name="stock"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="empresa.producto_vistas">
+      <field name="name">vistasproducto</field>
+      <field name="model">empresa.producto</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div>
+              <h1>
+                <i class="fa fa-fw o_button_icon fa fa-desktop"></i>
+                Edicion del producto:
+              </h1>
+            </div>
+            <group col='6'>
+              <group colspan='3'>
+                <field name="identificador"/>
+              </group>
+              <group colspan='3'>
+                <field name="nombre"/>
+              </group>
+            </group>
+            <group col='6'>
+              <group colspan='3'>
+                <field name="precio"/>
+              </group>
+              <group colspan='3'>
+                <field name="stock"/>
+              </group>
+            </group>
+            <group col='6'>
+              <group colspan='6'>
+                <field name="descripcion"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!--  Vistas de categoria  -->
+    <record model="ir.ui.view" id="empresa.categoria_list">
+      <field name="name">empresa.categoria.view</field>
+      <field name="model">empresa.categoria</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="empresa.categoria_vistas">
+      <field name="name">vistascategoria</field>
+      <field name="model">empresa.categoria</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div>
+              <h1>
+                <i class="fa fa-fw o_button_icon fa fa-tag"></i>
+                Edicion de la categoria:
+              </h1>
+            </div>
+            <group col='6'>
+              <group colspan='2'>
+                <field name="nombre"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!--  Vistas de proveedor  -->
+    <record model="ir.ui.view" id="empresa.proveedor_list">
+      <field name="name">empresa.proveedor.view</field>
+      <field name="model">empresa.proveedor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nif"/>
+          <field name="nombre"/>
+          <field name="direccion"/>
+          <field name="telefono"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="empresa.proveedor_vistas">
+      <field name="name">vistasproveedor</field>
+      <field name="model">empresa.proveedor</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div>
+              <h1>
+                <i class="fa fa-fw o_button_icon fa fa-truck"></i>
+                Edicion del proveedor:
+              </h1>
+            </div>
+            <group col='6'>
+              <group colspan='2'>
+                <field name="nif"/>
+              </group>
+              <group colspan='2'>
+                <field name="nombre"/>
+              </group>
+              <group colspan='2'>
+                <field name="telefono"/>
+              </group>
+            </group>
+            <group col='6'>
+              <group colspan='6'>
+                <field name="direccion"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!--  actions opening views on models  -->
+    <record model="ir.actions.act_window" id="empresa.cliente_action_window">
+      <field name="name">Clientes</field>
+      <field name="res_model">empresa.cliente</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="empresa.action_server">
-      <field name="name">empresa server</field>
-      <field name="model_id" ref="model_empresa_empresa"/>
+    <record model="ir.actions.act_window" id="empresa.factura_action_window">
+      <field name="name">Facturas</field>
+      <field name="res_model">empresa.factura</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="empresa.producto_action_window">
+      <field name="name">Productos</field>
+      <field name="res_model">empresa.producto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="empresa.categoria_action_window">
+      <field name="name">Categorias</field>
+      <field name="res_model">empresa.categoria</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="empresa.proveedor_action_window">
+      <field name="name">Proveedores</field>
+      <field name="res_model">empresa.proveedor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!--  server action to the one above  -->
+    <!-- 
+    <record model="ir.actions.server" id="garaje.action_server">
+      <field name="name">garaje server</field>
+      <field name="model_id" ref="model_garaje_garaje"/>
       <field name="state">code</field>
       <field name="code">
         action = {
@@ -38,23 +260,21 @@
         }
       </field>
     </record>
--->
-
-    <!-- Top menu item -->
-<!--
-    <menuitem name="empresa" id="empresa.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="empresa.menu_1" parent="empresa.menu_root"/>
-    <menuitem name="Menu 2" id="empresa.menu_2" parent="empresa.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="empresa.menu_1_list" parent="empresa.menu_1"
-              action="empresa.action_window"/>
-    <menuitem name="Server to list" id="empresa" parent="empresa.menu_2"
-              action="empresa.action_server"/>
--->
+ -->
+    <!--  Top menu item  -->
+    <menuitem name="Empresa" id="empresa.menu_root"/>
+    <!--  menu categories  -->
+    <menuitem name="Cliente" id="empresa.cliente_menu" parent="empresa.menu_root" action="empresa.cliente_action_window"/>
+    <menuitem name="Factura" id="empresa.factura_menu" parent="empresa.menu_root" action="empresa.factura_action_window"/>
+    <menuitem name="Producto" id="empresa.producto_menu" parent="empresa.menu_root" action="empresa.producto_action_window"/>
+    <menuitem name="Categoria" id="empresa.categoria_menu" parent="empresa.menu_root" action="empresa.categoria_action_window"/>
+    <menuitem name="Proveedor" id="empresa.proveedor_menu" parent="empresa.menu_root" action="empresa.proveedor_action_window"/>
+    <!--  actions. Haremos un action por cada entidad  -->
+    <!-- 
+    <menuitem name="List" id="garaje.menu_1_list" parent="garaje.menu_1"
+              action="garaje.action_window"/>
+    <menuitem name="Server to list" id="garaje" parent="garaje.menu_2"
+              action="garaje.action_server"/>
+ -->
   </data>
 </odoo>

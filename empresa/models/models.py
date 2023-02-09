@@ -18,9 +18,8 @@
 #             record.value2 = float(record.value) / 100
 
 # -*- coding: utf-8 -*-
-
+from odoo.exceptions import ValidationError
 from odoo import models, fields, api
-
 #hace falta para _get_annios(self)
 from dateutil.relativedelta import *
 from datetime import date
@@ -34,13 +33,17 @@ class cliente(models.Model):
     fechaNacimiento = fields.Date('Fecha', required = True, default = fields.Date.today())
     edad = fields.Integer('Edad', required = True, compute='_get_annios') 
     direccion = fields.Text('Direccion', required = True)
-    telefono = fields.Char('Telefono', required = True, size=9)#api.constraints
+    telefono = fields.Integer('Telefono', required = True, size=9)#api.constraints
+    @api.constrains('telefono')
+    def _check_value(self):
+        if self.telefono < 600000000 or self.telefono > 700000000:
+            raise ValidationError('Debe empezar por 6 o 7 y tener longitud 9')
 
     @api.depends('fechaNacimiento') 
     def _get_annios(self): 
         for cliente in self: 
             hoy = date.today()
-            edad.edad = relativedelta(hoy, cliente.fechaNacimiento).years
+            cliente.edad = relativedelta(hoy, cliente.fechaNacimiento).years
     
     factura_ids = fields.One2many('empresa.factura', 'cliente_id', string='cliente-factura')
 
@@ -49,10 +52,14 @@ class factura(models.Model):
     _name='empresa.factura'
     _description = 'Características de una factura'
 
-    numFactura = fields.Integer('numFactura', required = True) 
-    fechaEmision = fields.Date('fechaEmision', required = True, default = fields.Date.today())
-    total = fields.Integer('numFactura', required = True) 
-    
+    numFactura = fields.Integer('NumFactura', required = True) 
+    fechaEmision = fields.Date('FechaEmision', required = True, default = fields.Date.today())
+    total = fields.Float('Total',(7,2), required = True) 
+
+    @api.constrains('total')
+    def _check_value(self):
+        if len(str(self.total))>7:
+            raise ValidationError('Debe tener longitud menor o igual a 7')
     #Campos relacionales
     cliente_id = fields.Many2one('empresa.cliente', string='factura-cliente')
     producto_ids = fields.One2many('empresa.producto', 'factura_id', string='factura-producto')
@@ -65,7 +72,7 @@ class producto(models.Model):
     identificador = fields.Integer('Identificador', required = True)
     nombre = fields.Char(string='Nombre', required = True)
     descripcion = fields.Text('Descripcion', required = True)
-    precio = fields.Float('Precio', (8,2), help='Coste total de producto') # 5 números naturales más 2 decimales
+    precio = fields.Float('Precio', help='Coste total de producto') # 5 números naturales más 2 decimales
     stock = fields.Integer('Stock', required = True)
 
     #Campos relacionales
@@ -76,7 +83,7 @@ class producto(models.Model):
 
 class categoria(models.Model):
     _name = 'empresa.categoria'
-    _description = 'empresa.empresa'
+    _description = 'Caracteristicas de una categoria'
 
     nombre = fields. Selection (string = 'Nombre', selection =[('o','Ordenadores'),('s','Smartphones'),('a','Audiovisual'), ('p','Periféricos'),('t','Televisores'), ('g','Gaming')], default='l')
     
@@ -89,6 +96,6 @@ class proveedor(models.Model):
     nif = fields.Char('Dni', required = True, size=9)
     nombre = fields.Char(string='Nombre', required = True)
     direccion = fields.Text('Direccion', required = True)
-    telefono = fields.Char('Telefono', required = True, size=9)
+    telefono = fields.Integer('Telefono', required = True, size=9)
 
     producto_ids = fields.One2many('empresa.producto', 'proveedor_id', string='proveedor-producto')
