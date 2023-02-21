@@ -27,6 +27,9 @@
                 <i class="fa fa-fw o_button_icon fa fa-user"></i>
                 Edicion del cliente:
               </h1>
+              <h5>
+                En esta pestaña podrá añadir los datos relativos a un cliente. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
+              </h5>
             </div>
             <group col='6'>
               <group colspan='3'>
@@ -49,6 +52,10 @@
                 <field name="direccion"/>
               </group>
             </group>
+            <h5>
+              <i class="fa fa-fw o_button_icon fa fa-comment"></i>
+                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+            </h5>
           </sheet>
         </form>
       </field>
@@ -77,6 +84,9 @@
                 <i class="fa fa-fw o_button_icon fa fa-file"></i>
                 Edicion de la factura:
               </h1>
+              <h5>
+                En esta pestaña podrá añadir los datos relativos a una factura. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
+              </h5>
             </div>
             <group col='6'>
               <group colspan='2'>
@@ -89,6 +99,10 @@
                 <field name="total"/>
               </group>
             </group>
+            <h5>
+              <i class="fa fa-fw o_button_icon fa fa-comment"></i>
+                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+            </h5>
           </sheet>
         </form>
       </field>
@@ -118,6 +132,9 @@
                 <i class="fa fa-fw o_button_icon fa fa-desktop"></i>
                 Edicion del producto:
               </h1>
+              <h5>
+                En esta pestaña podrá añadir los datos relativos a un producto. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
+              </h5>
             </div>
             <group col='6'>
               <group colspan='3'>
@@ -140,6 +157,10 @@
                 <field name="descripcion"/>
               </group>
             </group>
+            <h5>
+              <i class="fa fa-fw o_button_icon fa fa-comment"></i>
+                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+            </h5>
           </sheet>
         </form>
       </field>
@@ -165,12 +186,19 @@
                 <i class="fa fa-fw o_button_icon fa fa-tag"></i>
                 Edicion de la categoria:
               </h1>
+              <h5>
+                En esta pestaña podrá añadir los datos relativos a una categoría. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
+              </h5>
             </div>
             <group col='6'>
               <group colspan='2'>
                 <field name="nombre"/>
               </group>
             </group>
+            <h5>
+              <i class="fa fa-fw o_button_icon fa fa-comment"></i>
+                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+            </h5>
           </sheet>
         </form>
       </field>
@@ -199,6 +227,9 @@
                 <i class="fa fa-fw o_button_icon fa fa-truck"></i>
                 Edicion del proveedor:
               </h1>
+              <h5>
+                En esta pestaña podrá añadir los datos relativos a un proveedor. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
+              </h5>
             </div>
             <group col='6'>
               <group colspan='2'>
@@ -216,6 +247,10 @@
                 <field name="direccion"/>
               </group>
             </group>
+            <h5>
+              <i class="fa fa-fw o_button_icon fa fa-comment"></i>
+                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+            </h5>
           </sheet>
         </form>
       </field>
