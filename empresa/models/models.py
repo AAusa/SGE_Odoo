@@ -28,7 +28,7 @@ class cliente(models.Model):
     _name = 'empresa.cliente'
     _description = 'Características de un cliente'
 
-    dni = fields.Char('Dni', required = True, size=9)
+    name = fields.Char('Dni', required = True, size=9)
     nombre = fields.Char(string='Nombre', required = True)
     fechaNacimiento = fields.Date('Fecha', required = True, default = fields.Date.today())
     edad = fields.Integer('Edad', required = True, compute='_get_annios') 
@@ -57,7 +57,7 @@ class factura(models.Model):
     _name='empresa.factura'
     _description = 'Características de una factura'
 
-    numFactura = fields.Integer('NumFactura', required = True) 
+    name = fields.Integer('NumFactura', required = True) 
     fechaEmision = fields.Date('FechaEmision', required = True, default = fields.Date.today())
     total = fields.Float('Total',(7,2), required = True) 
 
@@ -66,7 +66,7 @@ class factura(models.Model):
         if len(str(self.total))>7:
             raise ValidationError('Debe tener 4 números naturales y 2 decimales o menos')
     #Campos relacionales
-    cliente_id = fields.Many2one('empresa.cliente', string='factura-cliente')
+    cliente_id = fields.Many2one('empresa.cliente', string='DniCliente')
     producto_ids = fields.One2many('empresa.producto', 'factura_id', string='factura-producto')
 
         
@@ -86,16 +86,16 @@ class producto(models.Model):
             raise ValidationError('Debe tener 4 números naturales y 2 decimales o menos')
 
     #Campos relacionales
-    factura_id = fields.Many2one('empresa.factura', string='producto-factura')
-    categoria_id = fields.Many2one('empresa.categoria', string='producto-categoria')
-    proveedor_id = fields.Many2one('empresa.proveedor', string='producto-proveedor')
+    factura_id = fields.Many2one('empresa.factura', string='numFactura')
+    categoria_id = fields.Many2one('empresa.categoria', string='Categoria')
+    proveedor_id = fields.Many2one('empresa.proveedor', string='nifProveedor')
 
 
 class categoria(models.Model):
     _name = 'empresa.categoria'
     _description = 'Caracteristicas de una categoria'
 
-    nombre = fields. Selection (string = 'Nombre', selection =[('o','Ordenadores'),('s','Smartphones'),('a','Audiovisual'), ('p','Periféricos'),('t','Televisores'), ('g','Gaming'), ('so','Software'), ('aam','Aplicaciones a medida'), ('r','Reparaciones'), ('pda','PDAs')], default='l')
+    name = fields. Selection (string = 'Nombre', selection =[('o','Ordenadores'),('s','Smartphones'),('a','Audiovisual'), ('p','Periféricos'),('t','Televisores'), ('g','Gaming'), ('so','Software'), ('aam','Aplicaciones a medida'), ('r','Reparaciones'), ('pda','PDAs')], default='o')
     
     producto_ids = fields.One2many('empresa.producto', 'categoria_id', string='categoria-producto')
 
@@ -103,7 +103,7 @@ class proveedor(models.Model):
     _name = 'empresa.proveedor'
     _description = 'Características de un proveedor'
 
-    nif = fields.Char('Nif', required = True, size=9)
+    name = fields.Char('Nif', required = True, size=9)
     nombre = fields.Char(string='Nombre', required = True)
     direccion = fields.Text('Direccion', required = True)
     telefono = fields.Integer('Telefono', required = True, size=9)

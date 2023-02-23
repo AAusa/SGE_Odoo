@@ -7,7 +7,7 @@
       <field name="model">empresa.cliente</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="dni"/>
+          <field name="name"/>
           <field name="nombre"/>
           <field name="fechaNacimiento"/>
           <field name="edad"/>
@@ -23,17 +23,17 @@
         <form>
           <sheet>
             <div>
-              <h1>
+              <h1 style="color:White;background-color: DarkGreen;text-align:center;font-family: Arial, Helvetica, sans-serif;font-style: oblique;">
                 <i class="fa fa-fw o_button_icon fa fa-user"></i>
                 Edicion del cliente:
               </h1>
-              <h5>
+              <h5 style="color:DarkGreen;text-align:left;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 18px;">
                 En esta pestaña podrá añadir los datos relativos a un cliente. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
               </h5>
             </div>
             <group col='6'>
               <group colspan='3'>
-                <field name="dni"/>
+                <field name="name"/>
               </group>
               <group colspan='3'>
                 <field name="nombre"/>
@@ -52,9 +52,12 @@
                 <field name="direccion"/>
               </group>
             </group>
-            <h5>
+            <h5 style="color:Black;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
               <i class="fa fa-fw o_button_icon fa fa-comment"></i>
-                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+                Si desea valorar el formulario comparta su feedback al siguiente correo:
+            </h5>
+            <h5 style="color:Blue;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
+                aa21.aausaberri97@iespabloserrano.com
             </h5>
           </sheet>
         </form>
@@ -66,13 +69,13 @@
       <field name="model">empresa.factura</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="numFactura"/>
+          <field name="name"/>
           <field name="fechaEmision"/>
           <field name="total"/>
+          <field name="cliente_id"/>
         </tree>
       </field>
     </record>
-    
     <record model="ir.ui.view" id="empresa.factura_vistas">
       <field name="name">vistasfactura</field>
       <field name="model">empresa.factura</field>
@@ -80,28 +83,36 @@
         <form>
           <sheet>
             <div>
-              <h1>
+              <h1 style="color:White;background-color: Brown;text-align:center;font-family: Arial, Helvetica, sans-serif;font-style: oblique;">
                 <i class="fa fa-fw o_button_icon fa fa-file"></i>
                 Edicion de la factura:
               </h1>
-              <h5>
+              <h5 style="color:Brown;text-align:left;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 18px;">
                 En esta pestaña podrá añadir los datos relativos a una factura. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
               </h5>
             </div>
             <group col='6'>
-              <group colspan='2'>
-                <field name="numFactura"/>
+              <group colspan='3'>
+                <field name="name"/>
               </group>
-              <group colspan='2'>
+              <group colspan='3'>
                 <field name="fechaEmision"/>
               </group>
-              <group colspan='2'>
+            </group>
+            <group col='6'>
+              <group colspan='3'>
                 <field name="total"/>
               </group>
+              <group colspan='3'>
+                <field name="cliente_id"/>
+              </group>
             </group>
-            <h5>
+            <h5 style="color:Black;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
               <i class="fa fa-fw o_button_icon fa fa-comment"></i>
-                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+                Si desea valorar el formulario comparta su feedback al siguiente correo:
+            </h5>
+            <h5 style="color:Blue;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
+                aa21.aausaberri97@iespabloserrano.com
             </h5>
           </sheet>
         </form>
@@ -117,7 +128,9 @@
           <field name="nombre"/>
           <field name="descripcion"/>
           <field name="precio"/>
-          <field name="stock"/>
+          <field name="factura_id"/>
+          <field name="categoria_id"/>
+          <field name="proveedor_id"/>
         </tree>
       </field>
     </record>
@@ -128,38 +141,50 @@
         <form>
           <sheet>
             <div>
-              <h1>
+              <h1 style="color:White;background-color: MediumSlateBlue;text-align:center;font-family: Arial, Helvetica, sans-serif;font-style: oblique;">
                 <i class="fa fa-fw o_button_icon fa fa-desktop"></i>
                 Edicion del producto:
               </h1>
-              <h5>
+              <h5 style="color:MediumSlateBlue;text-align:left;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 18px;">
                 En esta pestaña podrá añadir los datos relativos a un producto. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
               </h5>
             </div>
             <group col='6'>
-              <group colspan='3'>
+              <group colspan='2'>
                 <field name="identificador"/>
               </group>
-              <group colspan='3'>
+              <group colspan='4'>
                 <field name="nombre"/>
               </group>
             </group>
             <group col='6'>
-              <group colspan='3'>
+              <group colspan='2'>
                 <field name="precio"/>
               </group>
-              <group colspan='3'>
+              <group colspan='2'>
                 <field name="stock"/>
               </group>
-            </group>
-            <group col='6'>
-              <group colspan='6'>
+              <group colspan='2'>
                 <field name="descripcion"/>
               </group>
             </group>
-            <h5>
+            <group col='6'>
+              <group colspan='2'>
+                <field name="factura_id"/>
+              </group>
+              <group colspan='2'>
+                <field name="categoria_id"/>
+              </group>
+              <group colspan='2'>
+                <field name="proveedor_id"/>
+              </group>
+            </group>
+            <h5 style="color:Black;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
               <i class="fa fa-fw o_button_icon fa fa-comment"></i>
-                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+                Si desea valorar el formulario comparta su feedback al siguiente correo:
+            </h5>
+            <h5 style="color:Blue;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
+                aa21.aausaberri97@iespabloserrano.com
             </h5>
           </sheet>
         </form>
@@ -171,7 +196,7 @@
       <field name="model">empresa.categoria</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="nombre"/>
+          <field name="name"/>
         </tree>
       </field>
     </record>
@@ -182,22 +207,25 @@
         <form>
           <sheet>
             <div>
-              <h1>
+              <h1 style="color:White;background-color: DarkOliveGreen;text-align:center;font-family: Arial, Helvetica, sans-serif;font-style: oblique;">
                 <i class="fa fa-fw o_button_icon fa fa-tag"></i>
                 Edicion de la categoria:
               </h1>
-              <h5>
+              <h5 style="color:DarkOliveGreen;text-align:left;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 18px;">
                 En esta pestaña podrá añadir los datos relativos a una categoría. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
               </h5>
             </div>
             <group col='6'>
               <group colspan='2'>
-                <field name="nombre"/>
+                <field name="name"/>
               </group>
             </group>
-            <h5>
+            <h5 style="color:Black;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
               <i class="fa fa-fw o_button_icon fa fa-comment"></i>
-                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+                Si desea valorar el formulario comparta su feedback al siguiente correo:
+            </h5>
+            <h5 style="color:Blue;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
+                aa21.aausaberri97@iespabloserrano.com
             </h5>
           </sheet>
         </form>
@@ -209,7 +237,7 @@
       <field name="model">empresa.proveedor</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="nif"/>
+          <field name="name"/>
           <field name="nombre"/>
           <field name="direccion"/>
           <field name="telefono"/>
@@ -223,33 +251,36 @@
         <form>
           <sheet>
             <div>
-              <h1>
+              <h1 style="color:White;background-color: MidnightBlue;text-align:center;font-family: Arial, Helvetica, sans-serif;font-style: oblique;">
                 <i class="fa fa-fw o_button_icon fa fa-truck"></i>
                 Edicion del proveedor:
               </h1>
-              <h5>
+              <h5 style="color:MidnightBlue;text-align:left;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 18px;">
                 En esta pestaña podrá añadir los datos relativos a un proveedor. Algunos campos pueden necesitar una validación concreta por lo que asegurese de cumplirla.
               </h5>
             </div>
             <group col='6'>
-              <group colspan='2'>
-                <field name="nif"/>
+              <group colspan='3'>
+                <field name="name"/>
               </group>
-              <group colspan='2'>
+              <group colspan='3'>
                 <field name="nombre"/>
-              </group>
-              <group colspan='2'>
-                <field name="telefono"/>
               </group>
             </group>
             <group col='6'>
-              <group colspan='6'>
+              <group colspan='3'>
                 <field name="direccion"/>
               </group>
+              <group colspan='3'>
+                <field name="telefono"/>
+              </group>
             </group>
-            <h5>
+            <h5 style="color:Black;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
               <i class="fa fa-fw o_button_icon fa fa-comment"></i>
-                Si desea valorar el formulario comparta su feedback al siguiente correo: aa21.aausaberri97@iespabloserrano.com
+                Si desea valorar el formulario comparta su feedback al siguiente correo:
+            </h5>
+            <h5 style="color:Blue;text-align:right;font-family: Arial, Helvetica, sans-serif;font-style: normal;font-size: 15px;">
+                aa21.aausaberri97@iespabloserrano.com
             </h5>
           </sheet>
         </form>
